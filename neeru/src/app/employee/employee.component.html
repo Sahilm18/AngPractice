@@ -1,0 +1,77 @@
+<html>
+  <body>
+    <style>
+      table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #dde0e2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+h2 {
+  color :#4CAF50;
+  text-align : center;
+}
+
+</style>
+
+
+
+
+
+
+<br><br><br><br><br><br>
+
+<h2>WELCOME TO LEAVE MANAGEMENT SYSTEM</h2>
+
+<br><br><br>
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+      <input type="text" class="form-control" name="searchString" placeholder="Type to search.." [(ngModel)]="searchString">
+    </div>
+  </div>
+</form>
+
+
+
+
+<table border="3">
+  <tr>
+    <th>EMPID</th>
+    <th>EMPNAME</th>
+    <th>EMPEMAIL</th>
+    <th>EMPMOB</th>
+    <th>EMPJOINDATE</th>
+    <th>EMPAVLLEAVEBAL</th>
+    <th>EMPDEPT</th>
+    <th>EMPMGRID</th>
+    <th>LOGIN</th>
+  </tr>
+  <tr *ngFor="let emp of employee | async | filterdata : {empName : searchString, empId : searchString, empEmail : searchString, empMob : searchString}">
+    <td>{{emp.empId}}</td>
+    <td>{{emp.empName}}</td>
+    <td>{{emp.empEmail}}</td>
+    <td>{{emp.empMob}}</td>
+    <td>{{emp.empJoinDate}}</td>
+    <td>{{emp.empAvlLeaveBal}}</td>
+    <td>{{emp.empDept}}</td>
+    <td>{{emp.empMgrId}}</td>
+    <td>
+    <input type="button" value="login" (click) ="login(emp.empId,emp.empMgrId)"/>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
