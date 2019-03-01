@@ -1,0 +1,18 @@
+
+<table border="3">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>USER NAME</th>
+    <th>EMAIL</th>
+    <th>LOGIN</th>
+  </tr>
+  <tr *ngFor="let user of user | async">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <input type="button" value="login" (click) ="login(user.name)">
+    
+  </tr>
+</table>
